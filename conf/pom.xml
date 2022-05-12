@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>com.iiqdev</groupId>
+   <artifactId>iiqdev-ssb</artifactId>
+   <version>0.0.1-SNAPSHOT</version>
+   <packaging>pom</packaging>
+   
+   <properties>
+      <iiq.env>sandbox</iiq.env>
+   </properties>
+   
+  <profiles>
+    <profile>
+      <id>Windows</id>
+      <activation>
+        <os>
+          <family>Windows</family>
+        </os>
+      </activation>
+      <properties>
+        <script.ext>bat</script.ext>
+      </properties>
+    </profile>
+	
+    <profile>
+      <id>unix</id>
+      <activation>
+        <os>
+          <family>unix</family>
+        </os>
+      </activation>
+      <properties>
+        <script.ext>sh</script.ext>
+      </properties>
+    </profile>	
+  </profiles>	
+   
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.7</version>
+            <executions>
+               <execution>
+                  <id>iiq-ssb-build-clean</id>
+                  <phase>clean</phase>
+                  <goals>
+                     <goal>run</goal>
+                  </goals>
+                  <configuration>
+                     <target>
+                        <exec executable="${project.basedir}/build.${script.ext}" failonerror="true">
+                           <env key="SPTARGET" value="${iiq.env}" />
+                           <arg value="clean" />
+                        </exec>
+                     </target>
+                  </configuration>
+               </execution>
+               <execution>
+                  <id>iiq-ssb-build</id>
+                  <phase>package</phase>
+                  <goals>
+                     <goal>run</goal>
+                  </goals>
+                  <configuration>
+                     <target>
+                        <echo>Building for ${iiq.env}</echo>
+                        <exec executable="${project.basedir}/build.${script.ext}" failonerror="true">
+                           <env key="SPTARGET" value="${iiq.env}" />
+                           <arg value="main" />
+                        </exec>
+                     </target>
+                  </configuration>
+               </execution>
+            </executions>
+         </plugin>
+      </plugins>
+   </build>
+</project>
