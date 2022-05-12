@@ -1,4 +1,4 @@
-# SailPoint Docker
+# SailPoint IdentityIQ Docker
 
 > ⚠ This repository contains the docker configuration files, to build SailPoint IdentityIQ (IIQ). It does not contain the binary files for the product. SailPoint IdentityIQ is a proprietary product and must be downloaded form [SailPoint Compass Community](https://community.sailpoint.com/).
 
