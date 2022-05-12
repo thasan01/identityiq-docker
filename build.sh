@@ -1,7 +1,7 @@
 if [ -z ${SPTARGET} ]; 
 then 
   echo "SPTARGET is not defined";
-#  exit -1;
+  exit -1;
 fi
 
 copy_file () {
