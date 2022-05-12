@@ -5,7 +5,7 @@
 ## Features
 
 - [x] Maven wrapper on top of ANT build
-- [ ] Select Database (MySQL,~~Oracle~~,~~MSSQL Server~~).
+- [ ] Select Database (MySQL, ~~Oracle~~, ~~MSSQL Server~~).
 
 ## Prerequisites
 
